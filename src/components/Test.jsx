@@ -1,6 +1,12 @@
+import React, {useState, useEffect} from 'react';
 
 function Test() {
-  return <h2>Test</h2>;
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    document.title = `업데이트 횟수: ${count}`;
+  });
+
+  return <button onClick={() => setCount(count + 1)}>increase</button>;
 }
 
 export default Test;
