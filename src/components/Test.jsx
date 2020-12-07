@@ -20,8 +20,12 @@ class Test extends React.Component {
   };
   onClick = () => {
     const { count1 } = this.state;
-    this.setState({ count1: count1 + 1 });
-    console.log(count1);
+    // this.setState({ count1: count1 + 1 });
+    // this.setState({ count1: count1 + 1 });
+
+    this.setState(prevState => ({ count1: prevState.count1 + 1 }));
+    this.setState(prevState => ({ count1: prevState.count1 + 1 }));
+    console.log('count1:', count1);
   };
   render() {
     window.addEventListener('click', this.onClick);
