@@ -13,40 +13,35 @@ import React, { useState, useEffect } from 'react';
 //   return <button onClick={() => setCount(count + 1)}>increase</button>;
 // }
 
-const actions = {
-  init() {
-    return { count: 0 };
-  },
-  increment(state) {
-    return { count: state.count + 1 };
-  },
-  decrement(state) {
-    return { count: state.count - 1 };
-  }
-};
-
 class Test extends React.Component {
-  state = actions.init();
-
-  onIncrement = () => {
-    this.setState(actions.increment);
-  };
-  onDecrement = () => {
-    this.setState(actions.decrement);
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0
+    };
+    this.onClickInc = this.onClickInc.bind(this);
+    this.onClickDec = this.onClickDec.bind(this);
+  }
+  onClickHello(e) {
+    e.preventDefault();
+    alert('hello world');
+  }
+  onClickDec(e) {
+    const { count } = this.state;
+    this.setState({ count: count - 1 });
+  }
+  onClickInc(e) {
+    const { count } = this.state;
+    this.setState({ count: count + 1 });
+  }
   render() {
-    window.addEventListener('click', this.onIncrement);
-    window.addEventListener('click', this.onDecrement);
     return (
       <div>
-        <button onClick={() => this.onIncrement}>increase</button>
-        <button onClick={() => this.onDecrement}>decrement</button>
+        <button onClick={this.onClickHello}>hello</button>
+        <button onClick={this.onClickDec}>decrease</button>
+        <button onClick={this.onClickInc}>increase</button>
       </div>
     );
-  }
-  componentWillUnmount() {
-    window.removeEventListener('click', this.onIncrement);
-    window.removeEventListener('click', this.onDecrement);
   }
 }
 export default Test;
