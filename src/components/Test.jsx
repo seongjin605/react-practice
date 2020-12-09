@@ -13,8 +13,6 @@ import React from 'react';
 //   return <button onClick={() => setCount(count + 1)}>increase</button>;
 // }
 
-const ThemeContext = React.createContext('dark');
-
 class Test extends React.Component {
   constructor(props) {
     super(props);
