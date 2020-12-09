@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 // function Test() {
 //   const [count, setCount] = useState(0);
@@ -13,26 +13,30 @@ import React, { useState, useEffect } from 'react';
 //   return <button onClick={() => setCount(count + 1)}>increase</button>;
 // }
 
+const ThemeContext = React.createContext('dark');
+
 class Test extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       count: 0
     };
-    this.onClickInc = this.onClickInc.bind(this);
-    this.onClickDec = this.onClickDec.bind(this);
   }
-  onClickHello(e) {
+  onClickHello = e => {
     e.preventDefault();
     alert('hello world');
-  }
-  onClickDec(e) {
+  };
+  onClickDec = () => {
     const { count } = this.state;
     this.setState({ count: count - 1 });
-  }
-  onClickInc(e) {
+  };
+  onClickInc = () => {
     const { count } = this.state;
     this.setState({ count: count + 1 });
+  };
+  componentDidMount() {
+    const theme = this.context;
+    console.log('theme:', theme);
   }
   render() {
     return (
