@@ -33,8 +33,10 @@ class Test extends React.Component {
     this.setState({ count: count + 1 });
   };
   componentDidMount() {
-    const theme = this.context;
-    console.log('theme:', theme);
+    console.log('check1')
+  }
+  componentDidUpdate() {
+    console.log('check2')
   }
   render() {
     return (
