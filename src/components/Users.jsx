@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 const getUserApi = userId => {
   console.log(`userId: ${userId}`);
   return new Promise(resolve =>
-    setTimeout(
+    setTimeout(() =>
       resolve({
         name: 'Test Jin',
         age: 30

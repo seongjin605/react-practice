@@ -31,7 +31,7 @@ function App() {
             <About />
           </Route>
           <Route path="/users">
-            <Users />
+            <Users userId={'Jin'} />
           </Route>
           <Route path="/test">
             <Test />
