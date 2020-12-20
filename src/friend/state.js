@@ -9,7 +9,7 @@ export const removeFriend = friend => ({
   type: REMOVE,
   friend
 });
-export const editfriends = friend => ({ type: EDIT, friend });
+export const editfriend = friend => ({ type: EDIT, friend });
 
 const INITIAL_STATE = { friends: [] };
 const reducer = createReducer(INITIAL_STATE, {
@@ -17,9 +17,9 @@ const reducer = createReducer(INITIAL_STATE, {
   [REMOVE]: (state, action) =>
     (state.friends = state.friends.filter(friend => friend.id !== action.friend.id)),
   [EDIT]: (state, action) => {
-    const index = state.freinds.findIndex(freind => freind.id === action.freind.id);
+    const index = state.friends.findIndex(friend => friend.id === action.friend.id);
     if (index >= 0) {
-      state.freinds[index] = action.freind;
+      state.friends[index] = action.friend;
     }
   }
 });
