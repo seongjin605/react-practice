@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import timelineReducer, {
   addTimeLine,
   removeTimeLine,
@@ -11,12 +11,19 @@ import timelineReducer, {
 } from './timeline/state';
 import friendReducer, { addFriend, removeFriend, editfriend } from './friend/state';
 
+const middleware = store => next => action => {
+  console.log('🚀 start middleware');
+  const result = next(action);
+  console.log('🚀 end middleware');
+  return result;
+};
+
 const reducer = combineReducers({
   timeline: timelineReducer,
   freind: friendReducer
 });
 
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(middleware));
 
 store.subscribe(() => {
   const state = store.getState();
