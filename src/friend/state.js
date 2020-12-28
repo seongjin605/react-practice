@@ -1,22 +1,19 @@
 import createReducer from '../common/createReducer';
+import { ADD_FRIEND, REMOVE_FRIEND, EDIT_FRIEND } from '../store/ActionTypes';
 
-const ADD = 'friend/ADD';
-const REMOVE = 'friend/REMOVE';
-const EDIT = 'friend/EDIT';
-
-export const addFriend = friend => ({ type: ADD, friend });
+export const addFriend = friend => ({ type: ADD_FRIEND, friend });
 export const removeFriend = friend => ({
-  type: REMOVE,
+  type: REMOVE_FRIEND,
   friend
 });
-export const editfriend = friend => ({ type: EDIT, friend });
+export const editfriend = friend => ({ type: EDIT_FRIEND, friend });
 
 const INITIAL_STATE = { friends: [] };
 const reducer = createReducer(INITIAL_STATE, {
-  [ADD]: (state, action) => state.friends.push(action.friend),
-  [REMOVE]: (state, action) =>
+  [ADD_FRIEND]: (state, action) => state.friends.push(action.friend),
+  [REMOVE_FRIEND]: (state, action) =>
     (state.friends = state.friends.filter(friend => friend.id !== action.friend.id)),
-  [EDIT]: (state, action) => {
+  [EDIT_FRIEND]: (state, action) => {
     const index = state.friends.findIndex(friend => friend.id === action.friend.id);
     if (index >= 0) {
       state.friends[index] = action.friend;
