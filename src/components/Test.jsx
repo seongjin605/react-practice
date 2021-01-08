@@ -40,11 +40,14 @@ class Test extends React.Component {
   }
   render() {
     return (
+      <>
+      <h1>Hello Test Component!</h1>
       <div>
         <button onClick={this.onClickHello}>hello</button>
         <button onClick={this.onClickDec}>decrease</button>
         <button onClick={this.onClickInc}>increase</button>
       </div>
+      </>
     );
   }
 }
