@@ -39,14 +39,17 @@ class Test extends React.Component {
     console.log('check2')
   }
   render() {
+    const buttons = (
+      <React.Fragment>
+      <button onClick={this.onClickHello}>HelloWorld</button>
+      <button onClick={this.onClickDec}>decrease</button>
+      <button onClick={this.onClickInc}>increase</button>
+      </React.Fragment>
+    )
     return (
       <>
       <h1>Hello Test Component!</h1>
-      <div>
-        <button onClick={this.onClickHello}>hello</button>
-        <button onClick={this.onClickDec}>decrease</button>
-        <button onClick={this.onClickInc}>increase</button>
-      </div>
+      {buttons}
       </>
     );
   }
