@@ -1,18 +1,5 @@
 import React from 'react';
 
-// function Test() {
-//   const [count, setCount] = useState(0);
-//   useEffect(() => {
-//     function onClick() {
-//       setCount(count + 1);
-//       console.log('count:', count);
-//     }
-//     window.addEventListener("click", onClick);
-//     return () => window.removeEventListener("click", onClick);
-//   }, [count]);
-//   return <button onClick={() => setCount(count + 1)}>increase</button>;
-// }
-
 class Test extends React.Component {
   constructor(props) {
     super(props);
@@ -41,9 +28,9 @@ class Test extends React.Component {
   render() {
     const buttons = (
       <React.Fragment>
-      <button onClick={this.onClickHello}>HelloWorld</button>
-      <button onClick={this.onClickDec}>decrease</button>
-      <button onClick={this.onClickInc}>increase</button>
+        <button onClick={this.onClickHello}>HelloWorld</button>
+        <button onClick={this.onClickDec}>decrease</button>
+        <button onClick={this.onClickInc}>increase</button>
       </React.Fragment>
     )
     return (
