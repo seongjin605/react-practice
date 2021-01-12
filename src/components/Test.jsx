@@ -11,11 +11,13 @@ class Test extends React.Component {
     e.preventDefault();
     alert('hello world');
   };
-  onClickDec = () => {
+  onClickDec = (e) => {
+    e.preventDefault();
     const { count } = this.state;
     this.setState({ count: count - 1 });
   };
-  onClickInc = () => {
+  onClickInc = (e) => {
+    e.preventDefault();
     const { count } = this.state;
     this.setState({ count: count + 1 });
   };
