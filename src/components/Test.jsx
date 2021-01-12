@@ -13,13 +13,20 @@ class Test extends React.Component {
   };
   onClickDec = (e) => {
     e.preventDefault();
-    const { count } = this.state;
-    this.setState({ count: count - 1 });
+    this.setState(state => ({ count: state.count - 1 }));
   };
   onClickInc = (e) => {
     e.preventDefault();
-    const { count } = this.state;
-    this.setState({ count: count + 1 });
+    // https://react.vlpt.us/basic/24-class-component.html
+    this.setState(
+      {
+        count: this.state.count + 1
+      },
+      () => {
+        console.log('count:', this.state.count);
+      }
+
+    );
   };
   componentDidMount() {
     console.log('check1')
