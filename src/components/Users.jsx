@@ -8,7 +8,7 @@ const getUserApi = userId => {
         name: 'Test Jin',
         age: 30
       }),
-      3000
+      1000
     )
   );
 };
