@@ -1,8 +1,10 @@
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Home from './components/Home';
 import About from './components/About';
 import Users from './components/Users';
 import Test from './components/Test';
+import Counter from './components/Counter';
 
 function App() {
   return (
@@ -22,6 +24,9 @@ function App() {
             <li className="users">
               <Link to="/users">Users</Link>
             </li>
+            <li className="counter">
+              <Link to="/counter">counter</Link>
+            </li>
           </ul>
         </nav>
         <Switch>
@@ -33,6 +38,9 @@ function App() {
           </Route>
           <Route path="/test">
             <Test />
+          </Route>
+          <Route path="/counter">
+            <Counter />
           </Route>
           <Route path="/">
             <Home />

@@ -11,11 +11,11 @@ class Test extends React.Component {
     e.preventDefault();
     alert('hello world');
   };
-  onClickDec = (e) => {
+  onClickDec = e => {
     e.preventDefault();
     this.setState(state => ({ count: state.count - 1 }));
   };
-  onClickInc = (e) => {
+  onClickInc = e => {
     e.preventDefault();
     // https://react.vlpt.us/basic/24-class-component.html
     this.setState(
@@ -25,14 +25,13 @@ class Test extends React.Component {
       () => {
         console.log('count:', this.state.count);
       }
-
     );
   };
   componentDidMount() {
-    console.log('check1')
+    console.log('check1');
   }
   componentDidUpdate() {
-    console.log('count:', this.state)
+    console.log('count:', this.state);
   }
   render() {
     const buttons = (
@@ -41,11 +40,11 @@ class Test extends React.Component {
         <button onClick={this.onClickDec}>decrease</button>
         <button onClick={this.onClickInc}>increase</button>
       </React.Fragment>
-    )
+    );
     return (
       <>
-      <h1>Hello Test Component!</h1>
-      {buttons}
+        <h1>Hello Test Component!</h1>
+        {buttons}
       </>
     );
   }

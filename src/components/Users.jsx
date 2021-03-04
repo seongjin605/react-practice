@@ -3,16 +3,18 @@ import React, { useState, useEffect } from 'react';
 const getUserApi = userId => {
   console.log(`userId: ${userId}`);
   return new Promise(resolve =>
-    setTimeout(() =>
-      resolve({
-        name: 'Test Jin',
-        age: 30
-      }),
+    setTimeout(
+      () =>
+        resolve({
+          name: 'Test Jin',
+          age: 30
+        }),
       1000
     )
   );
 };
 
+/* eslint react/prop-types: 0 */
 function Users({ userId }) {
   const [user, setUser] = useState(null);
 
