@@ -32,7 +32,7 @@ class Test extends React.Component {
     console.log('check1')
   }
   componentDidUpdate() {
-    console.log('check2')
+    console.log('count:', this.state)
   }
   render() {
     const buttons = (
