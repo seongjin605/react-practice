@@ -19,20 +19,21 @@ function Users({ userId }) {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    getUserApi(userId).then(response => {
-      return setUser(response);
-    });
+    async function fetchUser() {
+      const user = await getUserApi(userId);
+      console.log(user);
+      setUser(user);
+    }
+    fetchUser();
   }, [userId]);
 
+  if (!user) {
+    return <p>사용자 정보 가져오는 중...</p>;
+  }
   return (
     <div>
-      {!user && <p>사용자 정보 가져오는 중...</p>}
-      {user && (
-        <>
-          <p>{`name is ${user.name}`}</p>
-          <p>{`age is ${user.age}`}</p>
-        </>
-      )}
+      <p>{`name is ${user.name}`}</p>
+      <p>{`age is ${user.age}`}</p>
     </div>
   );
 }
