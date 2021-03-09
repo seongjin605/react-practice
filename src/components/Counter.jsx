@@ -6,12 +6,13 @@ function Counter() {
   useEffect(() => {
     document.title = `업데이트 횟수: ${count}`;
     console.log('useEffect!!!');
-  },[count]);
-  return <>
-  <button onClick={() => setCount(count + 1)}>Plus count</button>
-  <button onClick={() => setCount2(count2 + 1)}>Plus count2</button>
-  </>
-  ;
+  }, [count]);
+  return (
+    <>
+      <button onClick={() => setCount(count + 1)}>Plus count</button>
+      <button onClick={() => setCount2(count2 + 1)}>Plus count2</button>
+    </>
+  );
 }
 
 export default Counter;
