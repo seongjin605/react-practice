@@ -2,14 +2,14 @@ module.exports = {
   root: true,
   env: {
     browser: true,
+    node: true,
     es6: true
   },
   parser: 'babel-eslint',
   parserOptions: {
-    sourceType: 'module',
     allowImportExportEverywhere: true
   },
-  extends: ['eslint:recommended', 'eslint:recommended', 'plugin:react/recommended'],
+  extends: ['eslint:recommended', 'plugin:react/recommended'],
   plugins: ['react', 'react-hooks'],
   // add your custom rules here
   rules: {
