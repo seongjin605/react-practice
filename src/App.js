@@ -5,6 +5,7 @@ import About from './components/About';
 import Users from './components/Users';
 import Test from './components/Test';
 import Counter from './components/Counter';
+import Board from './components/Board';
 
 function App() {
   return (
@@ -27,6 +28,9 @@ function App() {
             <li className="counter">
               <Link to="/counter">counter</Link>
             </li>
+            <li className="board">
+              <Link to="/board">Board</Link>
+            </li>
           </ul>
         </nav>
         <Switch>
@@ -41,6 +45,9 @@ function App() {
           </Route>
           <Route path="/counter">
             <Counter />
+          </Route>
+          <Route path="/board">
+            <Board />
           </Route>
           <Route path="/">
             <Home />
