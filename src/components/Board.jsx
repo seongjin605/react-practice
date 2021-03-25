@@ -17,9 +17,6 @@ function Board() {
     async function getPosts() {
       try {
         const { data: posts = [] } = await axios.get('https://jsonplaceholder.typicode.com/posts');
-        // if (posts.length > 0) {
-        //   setPosts(posts.slice(0, 15));
-        // }
         setPosts(posts);
         setOriginPosts(posts);
         return [posts];
@@ -32,7 +29,10 @@ function Board() {
 
   const indexOfLast = currentPage * postsPerPage;
   const indexOfFirst = indexOfLast - postsPerPage;
-  const currentPosts = posts.slice(indexOfFirst, indexOfLast);
+  let currentPosts = [];
+  if (posts.length > 0) {
+    currentPosts = posts.slice(indexOfFirst, indexOfLast);
+  }
   console.log('currentPosts:', currentPosts);
 
   return (
