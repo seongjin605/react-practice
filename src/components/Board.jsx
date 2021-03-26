@@ -18,14 +18,14 @@ function Board() {
       try {
         const { data: posts = [] } = await axios.get('https://jsonplaceholder.typicode.com/posts');
         setPosts(posts);
-        setOriginPosts(posts);
+        setOriginPosts([...posts], { id: posts.length });
         return [posts];
       } catch (error) {
         console.error('getPosts error:', error);
       }
     }
     setLoading(false);
-  }, [originPosts.length]);
+  }, [originPosts.id]);
 
   const indexOfLast = currentPage * postsPerPage;
   const indexOfFirst = indexOfLast - postsPerPage;
