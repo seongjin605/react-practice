@@ -13,18 +13,19 @@ function Board() {
 
   useEffect(() => {
     getPosts();
-    setLoading(true);
     async function getPosts() {
+      setLoading(true);
       try {
         const { data: posts = [] } = await axios.get('https://jsonplaceholder.typicode.com/posts');
         setPosts(posts);
         setOriginPosts([...posts], { id: posts.length });
+        setLoading(false);
         return [posts];
       } catch (error) {
+        setLoading(false);
         console.error('getPosts error:', error);
       }
     }
-    setLoading(false);
   }, [originPosts.id]);
 
   const indexOfLast = currentPage * postsPerPage;
