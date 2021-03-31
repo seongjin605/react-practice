@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useDebugValue } from 'react';
 import axios from 'axios';
 import Search from './board/Search';
 import Posts from './board/Post';
 import Pagination from './board/Pagination';
 
 function Board() {
+  const [dependency, setDependency] = useState(0);
   const [originPosts, setOriginPosts] = useState([]);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(10);
-
+  useDebugValue(`${posts}`);
+  useDebugValue(`${originPosts}`);
   useEffect(() => {
     getPosts();
     async function getPosts() {
@@ -18,7 +20,8 @@ function Board() {
       try {
         const { data: posts = [] } = await axios.get('https://jsonplaceholder.typicode.com/posts');
         setPosts(posts);
-        setOriginPosts([...posts], { id: posts.length });
+        setOriginPosts(posts);
+        setDependency(...{ id: posts.length });
         setLoading(false);
         return [posts];
       } catch (error) {
@@ -26,7 +29,7 @@ function Board() {
         console.error('getPosts error:', error);
       }
     }
-  }, [originPosts.id]);
+  }, [dependency.id]);
 
   const indexOfLast = currentPage * postsPerPage;
   const indexOfFirst = indexOfLast - postsPerPage;
