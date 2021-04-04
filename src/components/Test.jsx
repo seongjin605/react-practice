@@ -1,12 +1,13 @@
 import React from 'react';
 
 class Test extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      count: 0
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     count: 0
+  //   };
+  // }
+  state = { count: 0 };
   onClickHello = e => {
     e.preventDefault();
     alert('hello world');
