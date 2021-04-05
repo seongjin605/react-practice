@@ -33,9 +33,9 @@ function Board() {
 
   const indexOfLast = currentPage * postsPerPage;
   const indexOfFirst = indexOfLast - postsPerPage;
-  let currentPosts = [];
+  const currentPosts = [];
   if (posts.length > 0) {
-    currentPosts = posts.slice(indexOfFirst, indexOfLast);
+    currentPosts.push(...posts.slice(indexOfFirst, indexOfLast));
   }
   console.log('currentPosts:', currentPosts);
 

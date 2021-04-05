@@ -15,7 +15,6 @@ const searchPosts = (searchText, posts, originPosts, setPosts) => {
 
 function Search({ originPosts, posts, setPosts }) {
   const [search, setSearch] = useState('');
-  useEffect(() => {}, [search]);
   const handleInputChange = event => {
     const {
       target: { value = '' }
