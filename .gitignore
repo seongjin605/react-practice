@@ -11,6 +11,12 @@
 # production
 /build
 
+# webpack
+/webpack
+
+# dist
+/dist
+
 # misc
 .DS_Store
 .env.local
