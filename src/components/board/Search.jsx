@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 const searchPosts = (searchText, posts, originPosts, setPosts) => {
   if (!searchText) return setPosts(originPosts);
