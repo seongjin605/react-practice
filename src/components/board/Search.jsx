@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const searchPosts = (searchText, posts, originPosts, setPosts) => {
+const searchPosts = (searchText, posts, originPosts, setPosts, setCurrentPage) => {
   if (!searchText) return setPosts(originPosts);
   searchText = searchText.toLowerCase();
   const searchedPosts = posts.filter(post => {
@@ -10,10 +10,12 @@ const searchPosts = (searchText, posts, originPosts, setPosts) => {
       body.toLowerCase().indexOf(searchText) !== -1
     );
   });
+  console.log('searchedPosts:', searchedPosts);
   setPosts(searchedPosts);
+  setCurrentPage(1);
 };
 
-function Search({ originPosts, posts, setPosts }) {
+function Search({ originPosts, posts, setPosts, setCurrentPage }) {
   const [search, setSearch] = useState('');
   const handleInputChange = event => {
     const {
@@ -26,7 +28,7 @@ function Search({ originPosts, posts, setPosts }) {
   };
   const handleInputKeyDown = event => {
     if (event.key === 'Enter') {
-      searchPosts(search, posts, originPosts, setPosts);
+      searchPosts(search, posts, originPosts, setPosts, setCurrentPage);
     }
   };
   return (
@@ -37,7 +39,9 @@ function Search({ originPosts, posts, setPosts }) {
         onChange={handleInputChange}
         onKeyDown={handleInputKeyDown}
       />
-      <button onClick={() => searchPosts(search, posts, originPosts, setPosts)}>검색</button>
+      <button onClick={() => searchPosts(search, posts, originPosts, setPosts, setCurrentPage)}>
+        검색
+      </button>
     </>
   );
 }
