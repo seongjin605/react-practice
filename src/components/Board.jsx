@@ -21,7 +21,7 @@ function Board() {
         const { data: posts = [] } = await axios.get('https://jsonplaceholder.typicode.com/posts');
         setPosts(posts);
         setOriginPosts(posts);
-        setDependency(...{ id: posts.length });
+        setDependency(posts.length);
         setLoading(false);
         return [posts];
       } catch (error) {
@@ -29,7 +29,7 @@ function Board() {
         console.error('getPosts error:', error);
       }
     }
-  }, [dependency.id]);
+  }, [dependency]);
 
   const indexOfLast = currentPage * postsPerPage;
   const indexOfFirst = indexOfLast - postsPerPage;
@@ -37,18 +37,22 @@ function Board() {
   if (posts.length > 0) {
     currentPosts.push(...posts.slice(indexOfFirst, indexOfLast));
   }
-  console.log('currentPosts:', currentPosts);
-
+  console.log('currentPosts length:', currentPosts.length);
   return (
     <>
-      <Search posts={posts} originPosts={originPosts} setPosts={setPosts} />
-      <Posts posts={currentPosts} loading={loading}></Posts>
+      <Search
+        posts={posts}
+        originPosts={originPosts}
+        setPosts={setPosts}
+        setCurrentPage={setCurrentPage}
+      />
+      <Posts posts={currentPosts} loading={loading} />
       <Pagination
         currentPage={currentPage}
         postsPerPage={postsPerPage}
         totalPosts={posts.length}
         paginate={setCurrentPage}
-      ></Pagination>
+      />
     </>
   );
 }
