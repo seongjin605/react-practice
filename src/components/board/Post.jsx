@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const Posts = ({ posts, loading }) => {
+  useEffect(() => {
+    console.log('renderd');
+  });
   return (
     <>
       {loading && <div> loading... </div>}
@@ -12,4 +15,4 @@ const Posts = ({ posts, loading }) => {
     </>
   );
 };
-export default Posts;
+export default React.memo(Posts);
